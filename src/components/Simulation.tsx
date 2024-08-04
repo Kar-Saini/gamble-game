@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { LegacyRef, useEffect, useRef, useState } from "react";
 import { BallManager } from "../classes/BallManager";
 const WIDTH = 800;
 
@@ -34,15 +34,7 @@ export default function Simulation() {
   useEffect(() => {
     if (canvasRef.current) {
       const ballManager = new BallManager(
-        canvasRef.current as HTMLCanvasElement,
-        (index: number, startX?: number) => {
-          setOutputs((outputs: any) => {
-            return {
-              ...outputs,
-              [index]: [...(outputs[index] as number[]), startX],
-            };
-          });
-        }
+        canvasRef.current as HTMLCanvasElement
       );
       simulate(ballManager);
 
@@ -74,7 +66,11 @@ export default function Simulation() {
           minHeight: "100vh",
         }}
       >
-        <canvas ref={canvasRef} width="800" height="800"></canvas>
+        <canvas
+          ref={canvasRef as LegacyRef<HTMLCanvasElement>}
+          width="800"
+          height="800"
+        ></canvas>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { LegacyRef, useEffect, useRef, useState } from "react";
 import { BallManager } from "../classes/BallManager";
 import Modal from "./Modal";
 
@@ -19,7 +19,11 @@ const Game = () => {
   return (
     <div style={{ display: "flex", height: "screen" }}>
       <div>
-        <canvas ref={canvasRef} width="800" height="800"></canvas>
+        <canvas
+          ref={canvasRef as LegacyRef<HTMLCanvasElement>}
+          width="800"
+          height="800"
+        ></canvas>
       </div>
       <div>
         <button
