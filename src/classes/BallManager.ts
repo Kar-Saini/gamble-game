@@ -15,13 +15,10 @@ export class BallManager {
   private obstacles: Obstacle[];
   private sinks: Sink[];
   private requestId?: number;
-  private onFinish?: (index: number, startX?: number) => void;
-  private stopped: boolean;
   private setModalMessage?: (message: string) => void;
 
   constructor(
     canvasRef: HTMLCanvasElement,
-    onFinish?: (index: number, startX?: number) => void,
     setModalMessage?: (message: string) => void
   ) {
     this.balls = [];
@@ -29,8 +26,7 @@ export class BallManager {
     this.obstacles = createObstacles();
     this.sinks = createSinks();
     this.update();
-    this.onFinish = onFinish;
-    this.stopped = false;
+
     this.setModalMessage = setModalMessage;
   }
 

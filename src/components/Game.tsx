@@ -11,7 +11,6 @@ const Game = () => {
     if (canvasRef.current) {
       const newBallManager = new BallManager(
         canvasRef.current,
-        undefined,
         setModalMessage
       );
       setBallManager(newBallManager);
